@@ -5,7 +5,8 @@ import { ThemeOptions, createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppSelector } from "@/redux/store";
 import { selectedMode } from "@/redux/slices/themeSlice";
 import palette from "./palette";
-import componentsOverride from "./overrides";
+import { customShadows } from "./shadows";
+import componentsOverride from "./overrides/";
 
 type ThemeConfigProps = {
   children: ReactNode;
@@ -19,6 +20,7 @@ export default function ThemeConfig({ children }: ThemeConfigProps) {
       palette: isLight
         ? { ...palette.light, mode: "light" }
         : { ...palette.dark, mode: "dark" },
+      customShadows: isLight ? customShadows.light : customShadows.dark,
     }),
     [isLight]
   );

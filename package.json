@@ -17,13 +17,14 @@
     "@emotion/styled": "^11.10.5",
     "@iconify/icons-eva": "^1.2.3",
     "@iconify/react": "^4.0.0",
+    "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "@reduxjs/toolkit": "^1.8.6",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.4",
-    "v": "^0.3.0"
+    "wagmi": "^0.7.9"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -35,6 +36,7 @@
     "@types/react-dom": "18.0.8",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0",
+    "ethers": "^5.7.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",

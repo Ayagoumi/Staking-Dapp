@@ -15,9 +15,9 @@ declare module "@mui/material" {
 }
 
 const PRIMARY = {
-  light: "#5BE584",
-  main: "#00AB55",
-  dark: "#007B55",
+  light: "#1C1C1C",
+  main: alpha("#1890FF", 0.6),
+  dark: "#FFFFFF",
 };
 const SECONDARY = {
   light: "#84A9FF",
@@ -57,6 +57,7 @@ const GREY = {
   800: "#1C1C1C ",
   900: "#000000",
   500_8: alpha("#717171", 0.08),
+  100_12: alpha("#E3E3E3", 0.12),
   500_12: alpha("#717171", 0.12),
   500_16: alpha("#717171", 0.16),
   500_24: alpha("#717171", 0.24),
@@ -81,12 +82,12 @@ const palette = {
   light: {
     ...COMMON,
     text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-    background: { paper: "#fff", default: "#fff" },
+    background: { paper: "#F8F8F8", default: "#fff" },
   },
   dark: {
     ...COMMON,
     text: { primary: "#fff", secondary: GREY[500], disabled: GREY[600] },
-    background: { paper: GREY[800], default: GREY[900] },
+    background: { paper: "#181818", default: GREY[900] },
   },
 };
 

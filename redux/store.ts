@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ThemeReducer from "./slices/themeSlice";
+import WagmiReducer from "./slices/wagmiSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
     theme: ThemeReducer,
+    wagmi: WagmiReducer,
   },
 });
 

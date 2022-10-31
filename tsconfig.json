@@ -42,7 +42,9 @@
       "@/redux/*": ["redux/*"],
       "@/utils/*": ["./utils/*"],
       "@/theme/*": ["./theme/*"],
-      "@/layout/*": ["./layout/*"]
+      "@/layout/*": ["./layout/*"],
+      "@/components/*": ["./components/*"],
+      "@/hooks/*": ["./hooks/*"]
     }
   },
   "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.cy.ts"],
