@@ -11,6 +11,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.11",
     "@reduxjs/toolkit": "^1.8.6",
     "next": "13.0.0",
     "react": "18.2.0",
