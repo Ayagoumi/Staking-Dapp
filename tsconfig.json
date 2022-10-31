@@ -41,7 +41,8 @@
       "@/public/*": ["./public/*"],
       "@/redux/*": ["redux/*"],
       "@/utils/*": ["./utils/*"],
-      "@/theme/*": ["./theme/*"]
+      "@/theme/*": ["./theme/*"],
+      "@/layout/*": ["./layout/*"]
     }
   },
   "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.cy.ts"],

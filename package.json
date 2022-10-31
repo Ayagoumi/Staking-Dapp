@@ -15,16 +15,21 @@
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
+    "@iconify/icons-eva": "^1.2.3",
+    "@iconify/react": "^4.0.0",
     "@mui/material": "^5.10.11",
     "@reduxjs/toolkit": "^1.8.6",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "^8.0.4"
+    "react-redux": "^8.0.4",
+    "v": "^0.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@types/lodash": "^4.14.186",
     "@types/node": "18.11.8",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",

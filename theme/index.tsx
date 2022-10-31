@@ -5,6 +5,7 @@ import { ThemeOptions, createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppSelector } from "@/redux/store";
 import { selectedMode } from "@/redux/slices/themeSlice";
 import palette from "./palette";
+import componentsOverride from "./overrides";
 
 type ThemeConfigProps = {
   children: ReactNode;
@@ -23,6 +24,7 @@ export default function ThemeConfig({ children }: ThemeConfigProps) {
   );
 
   const theme = createTheme(themeOptions);
+  theme.components = componentsOverride(theme);
 
   return (
     <ThemeProvider theme={theme}>
