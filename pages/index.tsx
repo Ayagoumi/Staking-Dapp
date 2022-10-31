@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "@/layout/index";
 import Connect from "@/components/Connect";
+import Account from "@/components/Account";
 import { useIsMounted } from "@/hooks/index";
 import { useAccount } from "wagmi";
 import { useAppDispatch } from "@/redux/store";
@@ -17,5 +18,5 @@ export default function Home() {
   }, [isConnected]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!isMounted) return null;
-  return <Layout>{!isConnected && <Connect />}</Layout>;
+  return <Layout>{isConnected ? <Account /> : <Connect />}</Layout>;
 }
