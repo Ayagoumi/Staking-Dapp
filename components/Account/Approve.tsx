@@ -5,15 +5,26 @@ import {
   OutlinedInput,
   Typography,
   Button,
+  Grid,
+  alpha,
+  CardActionArea,
 } from "@mui/material";
-import { setStakedBalance } from "@/redux/slices/wagmiSlice";
+import {
+  setStakedBalance,
+  getStakedMessage,
+  getUnstakedMessage,
+  setIsApproved,
+  setMsgsReset,
+} from "@/redux/slices/wagmiSlice";
 import {
   useUnstake,
   useStake,
   useApprove,
   useTotalStaked,
 } from "@/hooks/index";
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import arrowIosBackFill from "@iconify/icons-eva/arrow-ios-back-fill";
+import { Icon } from "@iconify/react";
 
 // TODO: refactor this component.
 
@@ -38,12 +49,15 @@ export default function Approve({ spender }: IApprove) {
     <Card
       sx={{
         display: "flex",
+        position: "relative",
         width: "450px",
         flexDirection: "column",
         py: theme.spacing(3),
         gap: "1rem",
+        overflow: "revert",
       }}
     >
+      <BackBtn />
       <Typography variant="h6" fontWeight="bold">
         Approve Allowance
       </Typography>
@@ -72,32 +86,73 @@ export default function Approve({ spender }: IApprove) {
       />
       <ActionButtonsLabel
         status={isApproved}
+        color="primary"
         disabled={stakeAmount === 0}
         writeFunction={writeApprove}
         label="Approve"
         pendingLabel="Approving..."
       />
       {isApproved === "approved" && (
-        <>
-          <ActionButtonsLabel
-            status={isUnstaked}
-            disabled={
-              stakeAmount > 0 && stakeAmount <= stakedBalance ? false : true
-            }
-            writeFunction={writeUnstake}
-            label="Unstake"
-            pendingLabel="Unstaking..."
-          />
-          <ActionButtonsLabel
-            status={isStaked}
-            disabled={stakeAmount > 0 ? false : true}
-            writeFunction={writeStake}
-            label="Stake"
-            pendingLabel="Staking..."
-          />
-        </>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <ActionButtonsLabel
+              status={isUnstaked}
+              color="warning"
+              disabled={
+                stakeAmount > 0 && stakeAmount <= stakedBalance ? false : true
+              }
+              writeFunction={writeUnstake}
+              label="Unstake"
+              pendingLabel="Unstaking..."
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <ActionButtonsLabel
+              status={isStaked}
+              disabled={stakeAmount > 0 ? false : true}
+              color="primary"
+              writeFunction={writeStake}
+              label="Stake"
+              pendingLabel="Staking..."
+            />
+          </Grid>
+        </Grid>
       )}
     </Card>
+  );
+}
+
+export function BackBtn() {
+  const theme = useTheme();
+  const dispatch = useAppDispatch();
+  const stakedMessage = useAppSelector(getStakedMessage);
+  const unstakedMessage = useAppSelector(getUnstakedMessage);
+
+  return (
+    <>
+      {(stakedMessage || unstakedMessage) && (
+        <CardActionArea
+          onClick={() => {
+            dispatch(setIsApproved("idle"));
+            dispatch(setMsgsReset());
+          }}
+          sx={{
+            position: "absolute",
+            width: "2.7rem",
+            height: "2.7rem",
+            display: "flex",
+            alignItems: "center",
+            top: "-1rem",
+            left: "-1rem",
+            p: 1.5,
+            borderRadius: "100%",
+            backgroundColor: alpha(theme.palette.primary.main, 0.5),
+          }}
+        >
+          <Icon icon={arrowIosBackFill} width="25" height="25" />
+        </CardActionArea>
+      )}
+    </>
   );
 }
 
@@ -107,6 +162,7 @@ interface IActionButtonsLabel {
   writeFunction: (() => void) | undefined;
   label: string;
   pendingLabel: string;
+  color: "primary" | "warning";
 }
 
 export function ActionButtonsLabel({
@@ -115,6 +171,7 @@ export function ActionButtonsLabel({
   writeFunction,
   label,
   pendingLabel,
+  color,
 }: IActionButtonsLabel) {
   return (
     <>
@@ -123,7 +180,8 @@ export function ActionButtonsLabel({
           {writeFunction && (
             <Button
               variant="outlined"
-              sx={{ borderRadius: 2 }}
+              color={color}
+              sx={{ borderRadius: 2, width: "100%" }}
               onClick={() => writeFunction()}
               disabled={disabled}
             >
@@ -133,7 +191,11 @@ export function ActionButtonsLabel({
         </>
       )}
       {status === "pending" && (
-        <Button variant="outlined" sx={{ borderRadius: 2 }} disabled>
+        <Button
+          variant="outlined"
+          sx={{ borderRadius: 2, width: "100%" }}
+          disabled
+        >
           {pendingLabel}
         </Button>
       )}

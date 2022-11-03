@@ -67,6 +67,11 @@ export const WagmiSlice = createSlice({
     setStakedBalance: (state, action) => {
       state.stakedBalance = Number(action.payload);
     },
+    setMsgsReset: (state) => {
+      state.approvedMessage = "";
+      state.stakedMessage = "";
+      state.unstakedMessage = "";
+    },
     resetStore: (state) => {
       state.isConnected = false;
       state.address = undefined;
@@ -95,6 +100,7 @@ export const {
   setStakedMessage,
   setUnstakedMessage,
   setStakedBalance,
+  setMsgsReset,
   resetStore,
 } = WagmiSlice.actions;
 
