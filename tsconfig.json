@@ -44,7 +44,8 @@
       "@/theme/*": ["./theme/*"],
       "@/layout/*": ["./layout/*"],
       "@/components/*": ["./components/*"],
-      "@/hooks/*": ["./hooks/*"]
+      "@/hooks/*": ["./hooks/*"],
+      "@/constants/*": ["./constants/*"]
     }
   },
   "exclude": ["./out/**/*", "./node_modules/**/*", "**/*.cy.ts"],

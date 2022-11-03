@@ -22,6 +22,7 @@ import {
   setConnectionStatus,
   getConnectionStatus,
   getAddress,
+  resetStore,
 } from "@/redux/slices/wagmiSlice";
 
 export default function Navbar() {
@@ -40,8 +41,10 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   const handleDisconnect = () => {
+    // reset store
     dispatch(setConnectionStatus(false));
     disconnect();
+    dispatch(resetStore());
     setAnchorEl(null);
   };
 

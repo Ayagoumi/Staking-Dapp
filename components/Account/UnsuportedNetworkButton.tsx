@@ -2,7 +2,7 @@ import React from "react";
 import { useSwitchNetwork } from "wagmi";
 import { Card, Button, CardContent, Box, CardHeader } from "@mui/material";
 import { useAppDispatch } from "@/redux/store";
-import { setSupportedNetwork } from "@/redux/slices/wagmiSlice";
+import { setIsUnsupportedNetwork } from "@/redux/slices/wagmiSlice";
 
 export function UnsupportedNetworkButton() {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ export function UnsupportedNetworkButton() {
               sx={{ borderRadius: 2 }}
               onClick={() => {
                 switchNetwork(5);
-                dispatch(setSupportedNetwork(true));
+                dispatch(setIsUnsupportedNetwork(true));
               }}
             >
               Switch Network

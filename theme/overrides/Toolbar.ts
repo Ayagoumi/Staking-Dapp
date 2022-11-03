@@ -1,5 +1,5 @@
 import { Theme } from "@mui/material/styles";
-import { APPBAR_MOBILE } from "../../constants";
+import { APPBAR_MOBILE } from "@/constants/theme";
 
 export default function Toolbar(theme: Theme) {
   return {
